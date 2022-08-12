@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BackController;
+use App\Http\Controllers\FrontController;
 
 
 Route::get('/', function () {
@@ -19,10 +21,6 @@ Route::get('/sav', function () {
     return view('infos.contact.sav');
 })->name("sav");
 
-Route::get('/backend', function () {
-    return view('team.web.dev.backend');
-})->name("backend");
+Route::get('/backend', [BackController::class,"back"])->name("backend");
 
-Route::get('/frontend', function () {
-    return view('team.web.dev.frontend');
-})->name("frontend");
+Route::get('/frontend', [FrontController::class,"front"])->name("frontend");
